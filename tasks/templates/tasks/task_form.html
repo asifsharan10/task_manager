@@ -1,11 +1,27 @@
 {% extends 'base.html' %}
 
+{% block title %}Create Task{% endblock %}
+
 {% block content %}
-  <h2>{% if form.instance.id %}Update{% else %}Create{% endif %} Task</h2>
-  <form method="post" action="">
+  <h2>Create Task</h2>
+  <form method="post" action="{% url 'task_create' %}">
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Save">
+    <input type="submit" value="Create Task">
+  </form>
+  <a href="{% url 'task_list' %}">Back to Task List</a>
+{% endblock %}
+
+{% extends 'base.html' %}
+
+{% block title %}Update Task{% endblock %}
+
+{% block content %}
+  <h2>Update Task</h2>
+  <form method="post" action="{% url 'task_update' task.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Update Task">
   </form>
   <a href="{% url 'task_list' %}">Back to Task List</a>
 {% endblock %}

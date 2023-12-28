@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ task.title }}{% endblock %}
+
 {% block content %}
   <h2>{{ task.title }}</h2>
   <p>Description: {{ task.description }}</p>
@@ -13,4 +15,3 @@
   </form>
   <a href="{% url 'task_list' %}">Back to Task List</a>
 {% endblock %}
-
